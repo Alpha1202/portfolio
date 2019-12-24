@@ -1,0 +1,20 @@
+.justify{
+    margin: 0 auto;
+    height: 3.2rem;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.justify button{
+   padding: 1.1rem;
+   border: none;
+   background: transparent;
+   font-family: 'lato';
+   font-size: 2rem;
+}
+
+.justify button:focus{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid red;
+}

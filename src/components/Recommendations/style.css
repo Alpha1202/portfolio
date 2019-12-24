@@ -1,0 +1,9 @@
+.border {
+	height: 20rem;
+}
+.box {
+	position: absolute !important;
+	box-shadow: none;
+	width: 100%;
+	height: 20rem;
+}
