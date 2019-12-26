@@ -4,8 +4,10 @@ import Introduction from '../../components/Introduction/index';
 import Skills from '../../components/Skills/index';
 import Footer from '../../components/Footer/index';
 import Experience from '../../components/Experience/Experience';
-import img3 from '../../assests/passport.jpg';
+// import img3 from '../../assests/passport.jpg';
 import './index.css';
+
+const img3 = "https://res.cloudinary.com/de8vrxbqq/image/upload/v1577503714/portfolio/passport_xrxs8l.jpg";
 
 const About = () => {
 	const [ intro, setIntro ] = useState(true);

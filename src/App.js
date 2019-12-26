@@ -6,6 +6,7 @@ import HomePage from './pages/Homepage/index';
 import About from './pages/About/index';
 import Blog from './pages/Blog/Blog';
 import Contact from './pages/Contact/index';
+import ErrorPage from './pages/Error/index';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,6 +24,7 @@ function App() {
       <Route  path='/about' component={About} />
       <Route  path='/blog' component={Blog} />
       <Route  path='/contact' component={Contact} />
+      <Route component={ErrorPage} />
     </Switch>
     </BrowserRouter>
          

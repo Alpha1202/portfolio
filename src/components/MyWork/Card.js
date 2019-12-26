@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img2 from '../../assests/coming_soon3.jpg';
+// import img2 from '../../assests/coming_soon3.jpg';
 import './style.css';
+
+const img2 = 'https://res.cloudinary.com/de8vrxbqq/image/upload/v1577540000/portfolio/coming_soon3_zkqhjo.jpg';
 
 export default function Card() {
 	return (

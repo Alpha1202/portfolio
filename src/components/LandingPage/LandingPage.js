@@ -9,7 +9,7 @@ export default function LandingPage(props) {
 		<div className="wrapper">
 			<div className="container">
 				<div className="title logo-text">
-					<h1>Zuby.io</h1>
+					<h1>zuby.io</h1>
 				</div>
 			</div>
 			<Qualities />

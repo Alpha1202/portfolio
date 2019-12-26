@@ -11,7 +11,7 @@ export default function Navbar() {
 					<Link to="/homepage" className="navbar-item">
 						<div className="container">
 							<div className="title logo-text">
-								<h1>Zuby.io</h1>
+								<h1>zuby.io</h1>
 							</div>
 						</div>
 					</Link>

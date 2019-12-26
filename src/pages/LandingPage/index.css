@@ -1,9 +1,10 @@
 .wrapper {
 	margin: 0;
 	padding: 0;
-	background: linear-gradient(to right, rgb(12, 12, 12), rgb(173, 170, 170), url('../../assests/smile.jpg'));
+	background: linear-gradient(to right, rgb(12, 12, 12), rgb(173, 170, 170));
 	background-size: cover !important;
-	background-image: url('../../assests/bg4.jpg');
+	background-image: url('https://res.cloudinary.com/de8vrxbqq/image/upload/v1577503664/portfolio/bg4_fttgfl.jpg');
+	/* background-image: url('../../assests/bg4.jpg'); */
 	width: 100% !important;
 }
 

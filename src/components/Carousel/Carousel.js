@@ -6,7 +6,9 @@ import {
     Image,
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import img1 from '../../assests/smile.jpg';
+
+const img1 = 'https://res.cloudinary.com/de8vrxbqq/image/upload/v1577503726/portfolio/smile_v6uaua.jpg';
+// import img1 from '../../assests/smile.jpg';
 
 
 

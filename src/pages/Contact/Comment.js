@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { db } from '../../firebase';
 import { toast } from 'react-toastify';
+import sendMail from '../../api/mail';
 const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default function Comment() {
@@ -9,7 +10,7 @@ export default function Comment() {
 	const [ email, setEmail ] = useState('');
 	const [ body, setBody ] = useState('');
 	const [ error, setError ] = useState(false);
-	const [ loading, setLoading ] = useState(false)
+	const [ loading, setLoading ] = useState(false);
 
 	const handleNameInput = (event) => {
 		setName(event.target.value);
@@ -23,37 +24,40 @@ export default function Comment() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+
 		if (!regex.test(email)) {
 			return setError(true);
 		}
-		setLoading(true)
+		setLoading(true);
 		const payload = {
 			name,
 			email,
 			body
 		};
-		db
+		 db
 			.collection('messages')
 			.doc('msg')
 			.set({
 				payload
 			})
 			.then(() => {
-				callBackendAPI()
-				setLoading(false)
-				(toast.success('Yay!!!, I just recieved your message. Thank you for reaching out', {
-					position: toast.POSITION.TOP_CENTER,
-				  })
-				  )
-				// .then((res) => console.log(res))
-				// .catch((err) => console.log(err));
-				// callBackendAPI({
-				// 	email: 'nzubennamani@gmail.com',
-				// 	subject: ' New Message',
-				// 	text: payload.body
-				// })
-				// 	.then((res) => console.log(res))
-				// 	.catch((err) => console.log(err));
+				setLoading(false);
+				// to the user
+				sendMail({
+					email,
+					subject: 'Thank you',
+					body: 'I have just received your message, I will take prompt action(s) as required'
+				});
+				//  to me
+				sendMail({
+					email: 'nzubennamani@gmail.com',
+					subject: `You have a new message from ${name} with the email ${email}`,
+					body: `Here's the message from ${email}: ${body}`
+				})(
+					toast.success('Yay!!!, I just recieved your message. Thank you for reaching out', {
+						position: toast.POSITION.TOP_CENTER
+					})
+				);
 				console.log('Document successfully written!');
 			})
 			.catch(function(error) {
@@ -64,18 +68,6 @@ export default function Comment() {
 		setName('');
 		setEmail('');
 		setBody('');
-	};
-	const callBackendAPI = async () => {
-		// const payload = {email, subject, text}
-		const response = await fetch('/api/send_email');
-		// const body = await response.json();
-		console.log(response)
-
-		// if (response.status !== 200) {
-		// 	throw Error(body.message);
-		// }
-		// console.log(body);
-		// return body;
 	};
 
 	return (
@@ -129,18 +121,16 @@ export default function Comment() {
 						/>
 					</div>
 				</div>
+
 				<div className="field is-grouped btn-wrap">
 					<div className="control">
 						{loading ? (
-							<button className="button ht has-text-centered is-link is-loading">
-							send
-						</button>
-						): (
+							<button className="button ht has-text-centered is-link is-loading">send</button>
+						) : (
 							<button className="button ht has-text-centered is-link" onClick={handleSubmit}>
-							send
-						</button>
+								send
+							</button>
 						)}
-						
 					</div>
 					<div className="control">
 						<button
