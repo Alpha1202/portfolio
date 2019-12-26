@@ -1,0 +1,22 @@
+version: "3"
+services:
+    frontend:
+        container_name: portfolio
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        image: zuby/portfolio
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app
+    backend:
+        container_name: portfolio_server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        image: zuby/portfolio_server
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./server:/usr/src/app
